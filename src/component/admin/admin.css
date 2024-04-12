@@ -1,0 +1,42 @@
+
+.admin-container {
+    padding: 20px;
+  }
+
+  .admin-heading {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Style for the file upload section */
+  .file-upload-wrapper {
+    margin-bottom: 20px;
+  }
+  
+  .file-upload-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .file-upload-input {
+    padding: 8px;
+  }
+  
+  /* Style for the button section */
+  .button-wrapper {
+    margin-bottom: 10px;
+  }
+  
+  .button-wrapper button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .button-wrapper button:hover {
+    background-color: #0056b3;
+  }
+  

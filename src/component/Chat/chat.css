@@ -1,0 +1,26 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0; /* Example background color */
+    padding: 10px;
+  }
+  
+  .navbar h1 {
+    margin: 0;
+  }
+  
+  .navbar button {
+    padding: 8px 16px;
+    margin-left: 10px; /* Adjust spacing between buttons */
+    border: none;
+    background-color: #007bff; /* Example button color */
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  /* Hover effect for buttons */
+  .navbar button:hover {
+    background-color: #0056b3; /* Example hover color */
+  }
+  

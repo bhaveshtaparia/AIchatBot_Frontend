@@ -1,0 +1,92 @@
+
+.login-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #000000;
+    perspective: 800px;
+  }
+  
+  .auth-container {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 80%; 
+    max-width: 400px;
+    transform-style: preserve-3d;
+    transform: rotateY(20deg);
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .auth-container:hover {
+    transform: rotateY(0deg) scale(1.05);
+  }
+  
+  .login-page h1 {
+    color: #4caf50;
+  }
+  
+  .login-page form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-page label {
+    margin-bottom: 8px;
+    color: #4caf50;
+  }
+  
+  .login-page input {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #4caf50;
+    border-radius: 4px;
+    background-color: #1a1a1a;
+    color: white;
+  }
+  
+  .login-page button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+  }
+  
+  .login-page button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    animation: pulse 1s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .login-page p {
+    margin-top: 16px;
+    color: white;
+  }
+
+  @media screen and (max-width: 600px) {
+    .auth-container {
+      width: 90%; 
+    }
+  }
+  

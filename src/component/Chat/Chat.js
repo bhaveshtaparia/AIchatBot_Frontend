@@ -14,6 +14,8 @@ function Chat() {
      navigate('/login');
     }
  },[authenticated,navigate])
+
+ // logout function 
  const handleLogout=async()=>{
     try {
       const requestOptions = {
@@ -34,9 +36,43 @@ function Chat() {
     }
   };
 
+
+  const [messages, setMessages] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+
+  const handleMessageSend = async () => {
+    if (inputValue.trim() === '') return; // Ignore empty messages
+
+    // Add user message to chat messages
+    setMessages([...messages, { sender: 'user', text: inputValue }]);
+
+    // Send user message to backend
+    try {
+     
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ question: inputValue }) 
+      };
+      const response = await fetch(`${uri}/api/v1/chat`, requestOptions,{ withCredentials: true });
+      const data = await response.json();
+      // Add chatbot response to chat messages
+      setMessages([...messages, { sender: 'chatbot', text: data.answer }]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+    }
+
+    // Clear input field
+    setInputValue('');
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
   return (
     <>
-    <div className='chat'>
       <div className='navbar'>
         <div>
     <h1>Chat With Career</h1>
@@ -46,11 +82,19 @@ function Chat() {
     <button onClick={handleLogout}>Logout</button>
   </div>
     </div>
+    <div className='chat'>
     <div className='chatbox'>
-       
+    {messages.map((message, index) => (
+            <div key={index} className={`message ${message.sender}`}>
+              {message.text}
+            </div>
+          ))}
+        </div>
+        <div className='input-container'>
+          <input type="text" value={inputValue} onChange={handleInputChange} placeholder="Type your message..." />
+          <button onClick={handleMessageSend}>Send</button>
+        </div>
     </div>
-
-      </div>
     </>
   )
 }

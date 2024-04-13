@@ -43,22 +43,28 @@ function Chat() {
   const handleMessageSend = async () => {
     if (inputValue.trim() === '') return; // Ignore empty messages
 
+    // Construct the new user message object
+    const newUserMessage = { sender: 'user', text: inputValue };
+
     // Add user message to chat messages
-    setMessages([...messages, { sender: 'user', text: inputValue }]);
+    setMessages(prevMessages => [...prevMessages, newUserMessage]);
 
     // Send user message to backend
     try {
-     
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify({ question: inputValue }) 
+        body: JSON.stringify({ question: inputValue })
       };
-      const response = await fetch(`${uri}/api/v1/chat`, requestOptions,{ withCredentials: true });
+      const response = await fetch(`${uri}/api/v1/chat`, requestOptions, { withCredentials: true });
       const data = await response.json();
+
+      // Construct the new chatbot message object
+      const newChatbotMessage = { sender: 'chatbot', text: data.answer };
+
       // Add chatbot response to chat messages
-      setMessages([...messages, { sender: 'chatbot', text: data.answer }]);
+      setMessages(prevMessages => [...prevMessages, newChatbotMessage]);
     } catch (error) {
       console.error('Error sending message:', error);
     }
@@ -73,18 +79,18 @@ function Chat() {
 
   return (
     <>
+      <div className='chat'>
       <div className='navbar'>
         <div>
-    <h1>Chat With Career</h1>
+          <h1>Chat With Career</h1>
         </div>
-  <div>
-  {user && user.role==="admin"?<button onClick={()=>navigate('/admin')}>Admin</button>:<></>}
-    <button onClick={handleLogout}>Logout</button>
-  </div>
-    </div>
-    <div className='chat'>
-    <div className='chatbox'>
-    {messages.map((message, index) => (
+        <div>
+          {user && user.role === "admin" ? <button onClick={() => navigate('/admin')}>Admin</button> : <></>}
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      </div>
+        <div className='chatbox'>
+          {messages.map((message, index) => (
             <div key={index} className={`message ${message.sender}`}>
               {message.text}
             </div>
@@ -94,9 +100,9 @@ function Chat() {
           <input type="text" value={inputValue} onChange={handleInputChange} placeholder="Type your message..." />
           <button onClick={handleMessageSend}>Send</button>
         </div>
-    </div>
+      </div>
     </>
   )
 }
 
-export default Chat
+export default Chat;

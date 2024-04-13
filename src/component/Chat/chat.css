@@ -1,81 +1,100 @@
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f0f0f0; /* Example background color */
-    padding: 10px;
-  }
-  
-  .navbar h1 {
-    margin: 0;
-  }
-  
-  .navbar button {
-    padding: 8px 16px;
-    margin-left: 10px; /* Adjust spacing between buttons */
-    border: none;
-    background-color: #007bff; /* Example button color */
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  /* Hover effect for buttons */
-  .navbar button:hover {
-    background-color: #0056b3; /* Example hover color */
-  }
-  .chat {
-    width: 400px;
-    margin: 0 auto;
-  }
- 
-  
+/* Chat container */
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
-  
-  .chatbox {
-    height: 300px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  
-  .message {
-    margin-bottom: 10px;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
-  .user {
-    background-color: #f0f0f0;
-    text-align: right;
-  }
-  
-  .chatbot {
-    background-color: #e0e0e0;
-  }
-  
-  .input-container {
-    margin-top: 10px;
-    display: flex;
-  }
-  
-  .input-container input[type="text"] {
-    flex: 1;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .input-container button {
-    padding: 5px 10px;
-    border: none;
-    background-color: #333;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 5px;
-  }
-  
-  .input-container button:hover {
-    background-color: #555;
-  }
-  
+/* Navbar style */
+/* Navbar style */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #007BFF;
+  color: #fff;
+  transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar button {
+  padding: 8px 20px;
+  font-size: 16px;
+  background-color: transparent; /* Transparent background */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.navbar button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white on hover */
+}
+
+
+/* Chat messages container */
+.chatbox {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual message style */
+.message {
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  max-width: 70%;
+}
+
+/* User message style */
+.message.user {
+  background-color: #DCF8C6;
+  align-self: flex-end;
+  max-width: 70%;
+}
+
+/* Chatbot message style */
+.message.chatbot {
+  background-color: #F0F0F0;
+  align-self: flex-start;
+  max-width: 70%;
+}
+
+/* Input container */
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+/* Input field */
+.input-container input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+}
+
+/* Send button */
+.input-container button {
+  padding: 8px 20px;
+  margin-left: 10px;
+  font-size: 16px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+

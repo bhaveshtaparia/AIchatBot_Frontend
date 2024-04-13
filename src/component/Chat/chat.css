@@ -98,3 +98,69 @@
   cursor: pointer;
 }
 
+.satisfaction-prompt {
+  position: absolute;
+  top: 20px; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.satisfaction-prompt p {
+  margin-bottom: 10px;
+}
+
+.satisfaction-prompt button {
+  margin-right: 10px;
+}
+
+
+.dislike-icon {
+  display: flex;
+  margin-top: 0px;
+  margin-left: 7px; 
+}
+
+.dislike-icon img {
+  width: 20px; 
+  height: 20px;
+  cursor: pointer;
+}
+.disliked {
+filter: invert(65%); 
+}
+
+/* Feedback prompt */
+.feedback-prompt {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-prompt p {
+  margin-bottom: 10px;
+}
+
+.star-rating {
+  display: flex;
+}
+
+.star-rating span {
+  font-size: 24px;
+  color: #ccc;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.star-rating span.active {
+  background-color: red;
+}

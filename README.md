@@ -73,4 +73,11 @@ This section is accessible only to administrators:
 4. **Unresolved Question:**
    Download a CSV file containing unresolved questions for further review and resolution.
 
+LoginPage:
+![loginpage](https://github.com/bhaveshtaparia/AIchatBot_Frontend/assets/103322001/dcfa1dde-fb6b-4281-a571-d6e1246f91c3)
 
+ChatPage:
+![chatpage_](https://github.com/bhaveshtaparia/AIchatBot_Frontend/assets/103322001/a7068c45-29b0-4e11-a18d-a11bfc8488ea)
+
+AdminPage:
+![Adminpage](https://github.com/bhaveshtaparia/AIchatBot_Frontend/assets/103322001/dd08d6c7-0006-4d74-8917-9f9e3f79c93b)

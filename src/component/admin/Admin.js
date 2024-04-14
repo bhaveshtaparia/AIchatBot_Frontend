@@ -2,9 +2,23 @@ import React, { useState } from 'react';
 import './admin.css'
 import uri from '../../uri';
 import { useNavigate } from 'react-router-dom';
+import {useSelector} from 'react-redux'
 function Admin() {
   // State to store uploaded file
   const navigate=useNavigate();
+
+  const authenticated=useSelector(state=>state.auth.isAuthenticated);
+  const user=useSelector(state=>state.auth && state.auth.user && state.auth.user.user);
+  useEffect(()=>{
+    if(!authenticated){
+     navigate('/login');
+    }
+    if(!user || user.role!=="admin"){
+      navigate('/');
+    }
+ },[authenticated,navigate,user])
+
+
   const [uploadedFile, setUploadedFile] = useState(null);
 
   // Function to handle file upload

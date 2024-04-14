@@ -27,12 +27,12 @@ The chatbot utilizes Natural Language Processing (NLP) techniques to process use
 1. Clone the repository.
 2. Run `npm install` in the terminal to install dependencies.
 
-### Frontend Setup:
+### Frontend Setup:(https://github.com/bhaveshtaparia/AIchatBot_Frontend)
 
 3. Replace the `uri` file with the backend API endpoint in the frontend code.
 4. Run `npm start` in the terminal to start the frontend server.
 
-### Backend Setup:
+### Backend Setup:(https://github.com/bhaveshtaparia/AIchatBot_backend)
 
 3. Configure the environment variables in the `.env` file:
 
@@ -44,7 +44,7 @@ EXPIRE=1
 4. Run `nodemon app.js` in the terminal to start the backend server.
 
 
-# How to Use
+# How to Use:(https://a-ichat-bot-frontend.vercel.app)
 
 ## LoginPage:
 ### User:

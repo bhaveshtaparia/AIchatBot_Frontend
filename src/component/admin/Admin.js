@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './admin.css'
 import uri from '../../uri';
+import { useNavigate } from 'react-router-dom';
 function Admin() {
   // State to store uploaded file
+  const navigate=useNavigate();
   const [uploadedFile, setUploadedFile] = useState(null);
 
   // Function to handle file upload
@@ -40,18 +42,87 @@ function Admin() {
   
 
   // Function to handle downloading CSV file for monitoring chatbot results
-  const handleDownloadMonitoringCSV = () => {
-    // Implement logic to download CSV file
+  const handleDownloadMonitoringCSV = async() => {
+    try {
+      // Fetch feedback data from the backend
+      const requestOptions = {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'text/csv',
+      },
+      };
+      const response = await fetch(`${uri}/api/v1/download/perfomance`, requestOptions,{ withCredentials: true });
+      const blob = await response.blob();
+
+      // Create URL for the Blob
+      const url = window.URL.createObjectURL(blob);
+
+      // Create link and trigger download
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'feedback.csv');
+      document.body.appendChild(link);
+      link.click();
+
+      // Cleanup
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Error downloading CSV file:', error);
+      // Handle error
+    }
   };
 
   // Function to handle downloading CSV file for sales team
-  const handleDownloadSalesCSV = () => {
-    // Implement logic to download CSV file
-  };
+  const handleDownloadSalesCSV = async () => {
+    try {
+        
+      const requestOptions = {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'text/csv',
+      },
+      };
+      const response = await fetch(`${uri}/api/v1/download/salesTeamData`, requestOptions,{ withCredentials: true });
+      const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        // Create link and trigger download
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'sales_data.csv');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } catch (error) {
+        console.error('Error downloading sales CSV file:', error);
+    }
+};
 
-  // Function to handle viewing user-AI conversation transcripts
-  const handleViewTranscripts = () => {
-    // Implement logic to fetch conversation transcripts from server
+
+
+  const handleUnresolvedQestion = async() => {
+    try {
+        
+      const requestOptions = {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'text/csv',
+      },
+      };
+      const response = await fetch(`${uri}/api/v1/download/doubt`, requestOptions,{ withCredentials: true });
+      const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'doubts.csv');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } catch (error) {
+        console.error('Error downloading sales CSV file:', error);
+    }
   };
 
   return (
@@ -68,7 +139,10 @@ function Admin() {
         <button onClick={handleDownloadSalesCSV}>Download CSV file for sales team</button>
       </div>
       <div className="button-wrapper">
-        <button onClick={handleViewTranscripts}>View User-AI conversation transcripts</button>
+        <button onClick={handleUnresolvedQestion}>Unresolved Question</button>
+      </div>
+      <div className="button-wrapper">
+        <button onClick={()=>(navigate('/'))}>Home</button>
       </div>
     </div>
   );

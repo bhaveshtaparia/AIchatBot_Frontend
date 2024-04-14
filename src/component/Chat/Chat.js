@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
 import uri from '../../uri';
 import { logout } from '../../actions/authAction';
@@ -68,6 +68,7 @@ function Chat() {
       } finally {
         setIsAIResponding(false);
         setIsInputBlocked(false);
+        setDisliked(false);
         setInputValue('');
         setQuestionCount(prevCount => prevCount + 1);
       }
@@ -79,15 +80,41 @@ function Chat() {
   
     const handleDislike = async (answer, question) => {
       if (!disliked) {
-        setDisliked(true);
+        try{
+          const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ question,answer})
+          };
+          const response = await fetch(`${uri}/api/v1/doubt`, requestOptions, { withCredentials: true });
+          await response.json();
+          setDisliked(true);
+        }catch(err){
+          alert(err);
+          console.log(err);
+        }
       }
     };
   
     const handleFeedback = async (rating) => {
-      alert(rating);
       setSelectedRating(rating);
-     
-      setQuestionCount(0);
+      try{
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ feedback:rating,transcripts:messages})
+        };
+        const response = await fetch(`${uri}/api/v1/feedback`, requestOptions, { withCredentials: true });
+        const data=await response.json();
+        setQuestionCount(0);
+        setSelectedRating(0);
+        // console.log(data);
+      }catch(err){
+        alert(err);
+        console.log(err);
+      }
     };
   
     return (
@@ -120,7 +147,7 @@ function Chat() {
             <button onClick={handleMessageSend} disabled={isAIResponding || isInputBlocked}>Send</button>
           </div>
         </div>
-        {questionCount >= 5 && (
+        {questionCount >= 2 && (
           <div className="feedback-prompt">
             <p>Please provide your feedback: </p>
             <div className="star-rating">

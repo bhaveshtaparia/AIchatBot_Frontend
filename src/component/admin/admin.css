@@ -1,42 +1,71 @@
 
 .admin-container {
-    padding: 20px;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+}
 
-  .admin-heading {
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Style for the file upload section */
-  .file-upload-wrapper {
-    margin-bottom: 20px;
-  }
-  
-  .file-upload-label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .file-upload-input {
-    padding: 8px;
-  }
-  
-  /* Style for the button section */
-  .button-wrapper {
-    margin-bottom: 10px;
-  }
-  
-  .button-wrapper button {
-    padding: 8px 16px;
-    margin-right: 10px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .button-wrapper button:hover {
-    background-color: #0056b3;
-  }
-  
+
+.admin-heading {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.file-upload-wrapper {
+  margin-bottom: 20px;
+}
+
+.file-upload-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.file-upload-input {
+  padding: 8px;
+}
+
+.button-wrapper {
+  margin-bottom: 10px;
+}
+
+.button-wrapper button {
+  padding: 8px 16px;
+  margin-right: 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button-wrapper button:hover {
+  background-color: #0056b3;
+}
+
+.file-upload-wrapper {
+  margin-bottom: 20px;
+}
+
+
+.file-upload-label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+
+.file-upload-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.file-upload-input:hover {
+  border-color: #007bff;
+}
+
+
+.file-upload-input:focus {
+  outline: none;
+  border-color: #007bff; 
+}

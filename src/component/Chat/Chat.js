@@ -147,7 +147,7 @@ function Chat() {
             <button onClick={handleMessageSend} disabled={isAIResponding || isInputBlocked}>Send</button>
           </div>
         </div>
-        {questionCount >= 2 && (
+        {questionCount >= 5 && (
           <div className="feedback-prompt">
             <p>Please provide your feedback: </p>
             <div className="star-rating">

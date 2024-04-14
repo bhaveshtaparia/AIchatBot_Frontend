@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# AI Chatbot (Without using any external APIs)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This chatbot is tailored to address inquiries from users interested in course purchases. Additionally, organizations have the ability to upload their datasets, empowering our chatbot to provide responses based on the uploaded data. As a result, our chatbot serves as a versatile AI solution with global applicability.
 
-## Available Scripts
+## Admin Features:
 
-In the project directory, you can run:
+1. **Dataset Upload**: Admins can upload their dataset in CSV format containing questions and corresponding answers. The chatbot utilizes this dataset to respond to user queries effectively. Upon uploading a new dataset, the previous data is replaced with the new dataset in the database.
 
-### `npm start`
+2. **User Satisfaction Feedback and Performance Monitoring**: The chatbot prompts ask for feedback after every 5 questions to gather insights into user satisfaction. This feedback, along with conversation logs between users and the chatbot, is stored for performance monitoring and improvement. Admins can download feedback data in CSV format for analysis and decision-making.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. **Doubt Assistant**: In cases where the chatbot is unable to provide a satisfactory answer, or when users express dissatisfaction with the response, their queries are stored in a separate database for resolution. Admins can review these doubts, provide appropriate answers, and update the database. Additionally, the chatbot incorporates a one-time clickable dislike button for users to signal unsatisfactory responses (Admin will do by downloading csv file).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4. **Data Sharing with Sales Team**: Conversations between users and the chatbot, along with user email addresses, are stored for analysis and data sharing with the sales team. This enables the sales team to understand user preferences and tailor offers accordingly. Only user queries are stored to maintain relevance.
 
-### `npm test`
+## User Features:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Simple Layout**: The user interface is designed to be intuitive and user-friendly, allowing users to easily ask questions and seek assistance.
 
-### `npm run build`
+## Chatbot Algorithm:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The chatbot utilizes Natural Language Processing (NLP) techniques to process user queries. Upon receiving a query, the chatbot tokenizes the query into individual words and matches them against the dataset. The response with the highest keyword match is selected as the answer. While this approach provides a basic level of functionality, further improvements in accuracy can be achieved through advanced NLP techniques and algorithm enhancements.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Setup Instructions:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Common Operations for Frontend and Backend:
 
-### `npm run eject`
+1. Clone the repository.
+2. Run `npm install` in the terminal to install dependencies.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Frontend Setup:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Replace the `uri` file with the backend API endpoint in the frontend code.
+4. Run `npm start` in the terminal to start the frontend server.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Backend Setup:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Configure the environment variables in the `.env` file:
 
-## Learn More
+PORT=5000
+DBURI="Your_database_link_here"
+SECRETKEY="Your_secret_key_for_authentication"
+EXPIRE=1
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Run `nodemon app.js` in the terminal to start the backend server.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+# How to Use
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## LoginPage:
+### User:
+Login with your email and password.
 
-### Analyzing the Bundle Size
+### Admin:
+Use the following credentials:
+- Email: bhavesh@gmail.com
+- Password: 1234567
+(Please do not misuse these credentials; they are provided for checking functionality purposes only.)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Chat:
+You can interact with the chatbot using the input box. Additionally, there is a dislike button available for providing feedback on responses.
 
-### Making a Progressive Web App
+## Admin Page:
+This section is accessible only to administrators:
+1. **Upload CSV File to Train Our Chatbot:**
+   Upload a CSV file containing two columns (question, answer) to train the chatbot.
+   
+2. **Download CSV File for Monitoring Chatbot Results:**
+   Download a CSV file containing user feedback and transcripts of user interactions with the chatbot.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. **Download CSV File for Sales Team:**
+   Download a CSV file containing data relevant to the sales team, including user email, questions asked, and dates of interaction.
+   
+4. **Unresolved Question:**
+   Download a CSV file containing unresolved questions for further review and resolution.
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
